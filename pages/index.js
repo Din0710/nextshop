@@ -11,6 +11,7 @@ export default function Home() {
     <Layout title="Home">
       <h1 className="text-3xl text-blue-500 bg-yellow-300">NextShop</h1>
       <p>Author: Jaloliddin</p>
+      <p>archa bayram yaqin</p>
     </Layout>
   )
 }

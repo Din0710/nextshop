@@ -32,8 +32,8 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
-        <footer className="flex h-10 justify-center items-center  shadow-inner bg-red-100">
-          <p>Copyight &copy; 2022 NextShop</p>
+        <footer className="flex h-10 justify-center items-center  shadow-inner bg-red-300">
+          <p>Copyight &copy; 2022 NextShop, Jaloliddin</p>
         </footer>
       </div>
     </>
