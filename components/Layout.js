@@ -1,7 +1,16 @@
+import { useSession } from 'next-auth/react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useContext } from 'react'
+import { ToastContainer } from 'react-toastify'
+import { Store } from '../utils/Store'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Layout({ title, children }) {
+  const { state } = useContext(Store)
+  const { cart } = state
+  const { status, data: session } = useSession()
+
   return (
     <>
       <Head>
@@ -10,24 +19,41 @@ export default function Layout({ title, children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <ToastContainer positinon="bottom-center" limit={1} />
+
       <div className="flex min-h-screen flex-col justify-between">
         <header>
           <nav className="flex flex-rowl h-12 items-center px-4 justify-between shadow-md bg-slate-200">
             <Link href="/" className="text-lg font-bold">
-              NextShop
+              Farruhni Web Dukoni
             </Link>
             <div>
-              <Link href="/info" className="p-4">
-                Info
+              <Link href="/fortfolio" className="p-4">
+                Fortfolio
+              </Link>
+              <Link href="/crypto" className="p-4">
+                Crypto
               </Link>
             </div>
             <div>
               <Link href="/card" className="p-4">
                 Card
+                {cart.cartItems.length > 0 && (
+                  <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs fond-bold text-white">
+                    {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                  </span>
+                )}
               </Link>
-              <Link href="/login" className="p-4">
-                Login
-              </Link>
+              {status === 'loading' ? (
+                'Loading'
+              ) : session?.user ? (
+                session.user.name
+              ) : (
+                <Link href="/login" className="p-4">
+                  Login
+                </Link>
+              )}
             </div>
           </nav>
         </header>

@@ -6,8 +6,18 @@
   @apply mb-5 block rounded-lg border border-gray-200  shadow-md;
 }
 
-.primary-button {
+.pbutton {
   @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500;
+}
+
+.button-link {
+  @apply bg-yellow-400 hover:bg-purple-500 p-2 m-2 rounded-md mb-4 text-center;
+}
+
+input,
+select,
+textarea {
+  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring bg-slate-100;
 }
 
 :root {
